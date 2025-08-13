@@ -18,9 +18,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
         'email',
-        'password',
+        'otp',
     ];
 
     /**
@@ -28,10 +27,8 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // No hidden fields as per migration
+    protected $hidden = [];
 
     /**
      * Get the attributes that should be cast.
