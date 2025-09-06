@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ResponseHelper;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class CategoryController extends Controller
     {
         try {
             $categories = Category::all();
-            return ResponseHelper::success($categories);
+
+            return ResponseHelper::success(CategoryResource::collection($categories), 'Category List');
         } catch (\Throwable $e) {
             return ResponseHelper::error($e);
         }

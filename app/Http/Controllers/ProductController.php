@@ -43,6 +43,15 @@ class ProductController extends Controller
             $products = Product::where('remark', $request->remark)
                 ->with('brand', 'category')
                 ->get();
+            // $products->transform(function ($item) {
+            //     $parseUrl = parse_url($item->image);
+            //     $externalImage = isset($parseUrl['host']) && isset($parseUrl['scheme']) && filter_var($item->image, FILTER_VALIDATE_URL);
+            //     if (!$externalImage) {
+
+            //         return   $item->image = asset($item->image);
+            //     }
+            //     return $item->image = $item->image;
+            // });
             return ResponseHelper::success($products);
         } catch (\Throwable $e) {
             return ResponseHelper::error($e);
